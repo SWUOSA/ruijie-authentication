@@ -14,7 +14,7 @@ pip install requests
 
 学校用的是锐捷的系统，和其他用锐捷的登录过程基本差不多，大概过程如下：
 
-1. 请求 http://222.198.127.170，获取到一个 cookie JSESSIONID，状态码为 302，然后通过相应设定的 Location 重定向到 http://222.198.127.170/eportal/gologout.jsp
+1. 请求 http://222.198.127.170 ，获取到一个 cookie JSESSIONID，状态码为 302，然后通过相应设定的 Location 重定向到 http://222.198.127.170/eportal/gologout.jsp
 2. 这里会判断是不是已经登录过了，如果登录过了就重定向到 http://222.198.127.170/eportal/./success.jsp ；如果没有登录，重定向至 http://123.123.123.123 注册设备，返回一段 script 代码又重定向
 3. 这个重定向浏览器会自动跳转，显示出来就是登录的那个界面；脚本这里因为不是 302 不会自动的重定向，需要提取 script 里面的 url 动手写一个 get 请求跳转；
    实际上 3 这一步在脚本中没有意义，只需要提取 2 中返回的那段 script 代码中的参数就是最后登录时的要用的 queryString 参数
