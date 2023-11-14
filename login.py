@@ -77,7 +77,7 @@ rsa_e = int(resultJson['publicKeyExponent'], 16)
 rsa_n = int(resultJson['publicKeyModulus'], 16)
 # print(hex(rsa_e), hex(rsa_n))
 secret = passwd + '>' + mac_str
-passwd_encrypted = hex(gmpy2.powmod(int.from_bytes(secret.encode()), rsa_e, rsa_n))[2:]
+passwd_encrypted = hex(gmpy2.powmod(int.from_bytes(secret.encode(), byteorder='big'), rsa_e, rsa_n))[2:]
 # print(passwd_encrypted)
 
 # 用前面获取的参数登录
